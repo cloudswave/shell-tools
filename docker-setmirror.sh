@@ -1,7 +1,7 @@
 #! /bin/sh
-#example：curl http://www.xlanlab.com/shell/docker-setmirror.sh | sh -s http://3a35aff6.m.daocloud.io
+#example：curl https://coding.net/u/ethanzhu/p/shell/git/raw/master/docker-setmirror.sh | sh -s http://3a35aff6.m.daocloud.io
 
-#or sh ./docker-setmirror.sh http://3a35aff6.m.daocloud.io
+#or local use： sh ./docker-setmirror.sh http://3a35aff6.m.daocloud.io
 # or sh ./docker-setmirror.sh (default:docker.mirrors.ustc.edu.cn)
 #
 set -e
