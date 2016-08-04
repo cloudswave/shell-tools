@@ -1,6 +1,7 @@
 #! /bin/sh
+# 源地址：https://www.daocloud.io/mirror#accelerator-doc
 #example：curl https://coding.net/u/ethanzhu/p/shell/git/raw/master/docker-setmirror.sh | sh -s http://3a35aff6.m.daocloud.io
-
+#
 #or local use： sh ./docker-setmirror.sh http://3a35aff6.m.daocloud.io
 # or sh ./docker-setmirror.sh (default:docker.mirrors.ustc.edu.cn)
 #
