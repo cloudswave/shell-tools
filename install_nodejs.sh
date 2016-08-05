@@ -1,75 +1,35 @@
-#!/bin/bash  
-# install and configure nodejs  
-# USAGE: sh node_setup.sh version , e.g. sh node_setup.sh 0.8.2  
-# ethanzhu@qq.com
-  
-if [ $# -eq 0 ]; then  
-    VERSION=6.2.2  
-else  
-    VERSION=$1  
-fi  
-  
-echo "install v$VERSION of node..."  
-sleep 1  
-NODE_VERSION=node-v$VERSION  
-NODE_TAR=${NODE_VERSION}.tar.gz  
-APP_HOME=/home/app  
-DOWNLOAD_HOME=/home/download  
-  
-echo -n 'Checking APP_HOME          : '  
-if [ ! -f $APP_HOME ]; then  
-    echo 'not found, create it...'  
-    mkdir -p $APP_HOME  
-else  
-    echo 'found'  
-fi  
-  
-echo -n 'Checking DOWNLOAD_HOME         : '  
-if [ ! -f $DOWNLOAD_HOME ]; then  
-    echo 'not found, create it...'  
-    mkdir -p $DOWNLOAD_HOME  
-else  
-    echo 'found'  
-fi  
-  
-cd $DOWNLOAD_HOME  
-rm -rf $NODE_VERSION  
-rm -rf ${APP_HOME}/${NODE_VERSION}  
-  
-echo -n "Checking $NODE_VERSION         : "  
-if [ -f $NODE_TAR ]; then  
-    echo 'found'  
-else  
-    echo "download $NODE_VERSION..."  
-    wget http://nodejs.org/dist/${NODE_TAR}  
-fi  
-  
-tar -zxvf $NODE_TAR  
-cd $NODE_VERSION  
-  
-./configure --prefix=${APP_HOME}/${NODE_VERSION}  
-make   
-make install  
-  
-rm /home/node  
-ln -s ${APP_HOME}/${NODE_VERSION} /home/node  
-  
-echo -n 'Checking node          : '  
-node_exists=`which node`  
-if [ -z $node_exists ]; then  
-    echo 'add node to PATH...'  
-    echo 'export PATH=$PATH:/home/node/bin' >> /etc/profile  
-    source /etc/profile  
-else  
-    echo 'found'  
-fi  
-  
-echo -n 'Checking NODE_PATH         : '  
-if [ -z $NODE_PATH ]; then  
-    echo 'set NODE_PATH...'  
-    echo 'export NODE_PATH=/home/node/lib/node_modules' >> /etc/profile  
-    source /etc/profile  
-else  
-    echo 'found'  
-fi  
-echo 'done' 
+#!/bin/sh
+# 安装 git下最新的node，node包管理器，Forever和Cloud9IDE工具（可选），mongodb 10gen；
+echo 'System Update'
+apt-get update
+echo 'Update completed'
+apt-get install libssl-dev git-core pkg-config build-essential curl
+echo 'Clone Node.js'
+cd /usr/src
+git clone https://github.com/joyent/node
+echo 'Node.js clone completed'
+
+echo 'Install Node.js'
+cd node
+./configure && make && make install
+echo 'Node.js install completed'
+
+echo 'Install Node Package Manager'
+curl http://npmjs.org/install.sh | sh
+echo 'NPM install completed'
+
+echo 'Install Forever'
+npm install forever
+echo 'Forever install completed'
+
+echo 'Install Cloud9IDE'
+git clone git://github.com/ajaxorg/cloud9.git
+echo 'Cloud9IDE install completed'
+
+echo 'Install MongoDB'
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" >> /etc/apt/sources.list
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+sudo apt-get update
+sudo apt-get install mongodb-10gen
+echo 'MongoDB install completed.'
