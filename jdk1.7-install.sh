@@ -22,4 +22,7 @@ fi
 
 #update environment
 source /etc/environment  
-echo "jdk is installed !"
+sudo update-alternatives --install /usr/bin/java java /usr/local/java/jdk1.7.0_67/bin/java 2
+echo "jdk is installed，请手动选择切换java版本"
+sudo update-alternatives --config java 
+
