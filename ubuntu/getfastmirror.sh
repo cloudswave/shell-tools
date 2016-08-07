@@ -10,6 +10,7 @@ VERSION="precise"  # precise is code of Ubuntu 12.04 if your ubuntu is not 12.04
 TEST_NETCONNECT_HOST="www.baidu.com"
 SOURCES_MIRRORS_FILE="sources_mirrors.list"    
 MIRRORS_SPEED_FILE="mirrors_speed.list"
+wget https://coding.net/u/ethanzhu/p/shell/git/raw/master/ubuntu/sources_mirrors.list
 function get_ping_speed()    #return average ping $1 time
 {
     local speed=`ping -W1 -c1 $1 2> /dev/null | grep "^rtt" |  cut -d '/' -f5`
