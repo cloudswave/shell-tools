@@ -6,7 +6,7 @@ echo 'Update completed'
 apt-get install libssl-dev git-core pkg-config build-essential curl
 echo 'Clone Node.js'
 cd /usr/src
-git clone https://github.com/joyent/node
+git clone https://github.com/nodejs/node
 echo 'Node.js clone completed'
 
 echo 'Install Node.js'
