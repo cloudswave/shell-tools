@@ -20,4 +20,7 @@ cp default /etc/nginx/sites-available/default
 service php5-fpm restart
 service nginx restart
 echo "<<< install Finish <<<"
-echo "The website root is '/var/www' port:80"
+echo "The website root is '/usr/www' port:80"
+
+cd /usr/www
+wget -O index.php https://coding.net/u/ethanzhu/p/shell/git/raw/master/nginx-php/phpinfo.php
