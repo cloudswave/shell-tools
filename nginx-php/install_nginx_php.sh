@@ -8,7 +8,7 @@ echo ">>> Start install nginx and php>>>"
 apt-get install nginx
 apt-get install php5-fpm
 apt-get install php5-cli php5-gd php5-mcrypt php5-mysql
-apt-get wget
+apt-get install wget
 
 mkdir /var/www
 
