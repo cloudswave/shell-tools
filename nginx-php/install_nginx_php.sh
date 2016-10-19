@@ -10,10 +10,10 @@ apt-get install php5-fpm
 apt-get install php5-cli php5-gd php5-mcrypt php5-mysql
 apt-get install wget
 
-mkdir /var/www
+mkdir /usr/www
 
 # 修改配置文件 /etc/nginx/sites-available/default
-wget -O default http://leanote.com/api/file/getAttach?fileId=5806f1aaab64413a7e00f07c
+wget -O default https://coding.net/u/ethanzhu/p/shell/git/raw/master/nginx-php/default
 cp default /etc/nginx/sites-available/default
 
 # 重启服务
